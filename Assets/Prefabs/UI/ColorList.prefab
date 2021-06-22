@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8129456657867840583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8129456657867840581}
+  - component: {fileID: 8129456657867840580}
+  m_Layer: 0
+  m_Name: ColorList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8129456657867840581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129456657867840583}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 243.48466, y: -19.195087, z: -5465.644}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8129456657867840580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129456657867840583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0848292286f2852409f72b4f8976ea59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - key: Red
+    color: {r: 1, g: 0.28773582, b: 0.31212527, a: 1}
+  - key: Orange
+    color: {r: 1, g: 0.5583801, b: 0.19339621, a: 1}
+  - key: Yellow
+    color: {r: 1, g: 0.82864344, b: 0.28627455, a: 1}
+  - key: Green
+    color: {r: 0.40000004, g: 0.8588236, b: 0.20784315, a: 1}
+  - key: LightBlue
+    color: {r: 0.23113209, g: 0.86710477, b: 1, a: 1}
+  - key: Blue
+    color: {r: 0.4198113, g: 0.4477065, b: 1, a: 1}
+  - key: Purple
+    color: {r: 0.83938557, g: 0.43867922, b: 1, a: 1}
+  - key: Pink
+    color: {r: 1, g: 0.5518868, b: 0.83969927, a: 1}
+  - key: Grey
+    color: {r: 0.7529412, g: 0.7529412, b: 0.7529412, a: 1}
+  - key: Black
+    color: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}

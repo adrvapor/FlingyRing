@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UIText_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 33bf7dc6a5f49df4da4f7b77555d4849, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 14463082496
+    m_Localized: Start!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3324679102464
+    m_Localized: Character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3439821135872
+    m_Localized: Progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3478492618752
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3533341532160
+    m_Localized: Go back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3614132215808
+    m_Localized: Highscore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3822597513216
+    m_Localized: Pearls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3874342641664
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4038235070464
+    m_Localized: Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4097714495488
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4134121054208
+    m_Localized: Change UI Color
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8418879414272
+    m_Localized: View achievements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8565919129600
+    m_Localized: View leaderboards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11512463826944
+    m_Localized: 'Press the buttons to go up.
+
+      The left button flings you to
+      the right, and viceversa!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20671754215424
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20730138927104
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20818152202240
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20858304274432
+    m_Localized: Main menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23617871093760
+    m_Localized: 'Score:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23682434015232
+    m_Localized: 'Pearls:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32354841206784
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1115987324772352
+    m_Localized: Rumble
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1
