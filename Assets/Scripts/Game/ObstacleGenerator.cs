@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObstacleGenerator : MonoBehaviour
 {
     private string[] obstacleTags = { "RockLeft", "RockRight", "RockCenter"};
-    private string[] enemyTags = { "Urchin", "Eel" };
+    private string[] enemyTags = { "Urchin", "Eel", "Oyster" };
 
     private int maxObstacleIdx = 3;
     private int maxEnemyIdx = 0;
@@ -33,7 +33,7 @@ public class ObstacleGenerator : MonoBehaviour
 
         if (currentPos.y >= nextY)
         {
-            nextY = currentPos.y + UnityEngine.Random.Range(2f, 5f);
+            nextY = currentPos.y + UnityEngine.Random.Range(2.5f, 5f);
 
             string tag = RandomizeNextObstacle();
             var margin = new Vector3(0, 1, 0);
@@ -43,6 +43,16 @@ public class ObstacleGenerator : MonoBehaviour
             var obstacle = objectPooler.SpawnFromPool(tag, currentPos + margin);
             if (tag == "Eel")
                 obstacle.transform.localScale += new Vector3(obstacle.transform.localScale.x * -2f * UnityEngine.Random.Range(0, 2), 0, 0);
+
+            if (tag == "Oyster")
+            {
+                var random = UnityEngine.Random.Range(0, 2);
+                obstacle.transform.localScale += new Vector3(obstacle.transform.localScale.x * -2f * random, 0, 0);
+
+                var oysterController = obstacle.GetComponent<OysterController>();
+                oysterController.Pearl.transform.localScale += new Vector3(oysterController.Pearl.transform.localScale.x * -2f * random, 0, 0);
+                oysterController.ResetPearl();
+            }
 
             if (UnityEngine.Random.Range(0f, 1f) <= 0.3)
             objectPooler.SpawnFromPool("Pearl", currentPos + new Vector3(UnityEngine.Random.Range(-2f, 2f), 2.5f, 0));
@@ -68,7 +78,10 @@ public class ObstacleGenerator : MonoBehaviour
         if (currentY > 20f)
             enableEnemies = true;
 
-        if (currentY > 50f && maxEnemyIdx < 2)
+        if (currentY > 40f && maxEnemyIdx < 2)
             maxEnemyIdx = 2;
+
+        if (currentY > 60f && maxEnemyIdx < 3)
+            maxEnemyIdx = 3;
     }
 }

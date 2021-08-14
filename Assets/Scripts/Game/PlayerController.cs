@@ -4,11 +4,19 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+public enum PowerUpTypes
+{
+    NONE,
+    SHIELD,
+
+}
+
 public class PlayerController : MonoBehaviour
 {    
     public float horizontalImpulse = 1f;
     public float verticalImpulse = 2f;
     public float bouncyness = 1.6f;
+    public float inertiaCounterFactor = 0.5f;
 
     public float maxHorizontalSpeed = 3f;
     public float maxVerticalSpeed = 5f;
@@ -19,16 +27,24 @@ public class PlayerController : MonoBehaviour
     public Vector2 screenBounds;
 
     private Rigidbody rigidbody;
+    private ShieldController shield;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        //shield = GetComponentInChildren<ShieldController>();
 
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         screenBounds.x -= 0.3f;
         screenBounds.y -= 1.5f;
 
         GameManager.SetPlayer(this);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) FlingRight();
+        if (Input.GetKeyDown(KeyCode.RightArrow)) FlingLeft();
     }
 
     void FixedUpdate()
@@ -66,7 +82,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Urchin" || other.tag == "Eel" || (other.tag == "Oyster" && other.gameObject.GetComponent<OysterDetector>().Closed))
         {
-            //other.gameObject.SetActive(false);
             gameObject.SetActive(false);
             GameManager.GameOver();
         }
@@ -75,17 +90,32 @@ public class PlayerController : MonoBehaviour
     public void FlingRight()
     {
         if(Settings.RumbleOn) Handheld.Vibrate();
-        rigidbody.velocity += Vector3.up * verticalImpulse + Vector3.right * horizontalImpulse;
+        rigidbody.velocity += Vector3.up * verticalImpulse + Vector3.right * horizontalImpulse 
+            + (rigidbody.velocity.x <= 0 ? new Vector3(-rigidbody.velocity.x * inertiaCounterFactor, 0, 0) : Vector3.zero);
     }
 
     public void FlingLeft()
     {
         if (Settings.RumbleOn) Handheld.Vibrate();
-        rigidbody.velocity += Vector3.up * verticalImpulse + Vector3.right * -horizontalImpulse;
+        rigidbody.velocity += Vector3.up * verticalImpulse + Vector3.right * -horizontalImpulse 
+            + (rigidbody.velocity.x >= 0 ? new Vector3(-rigidbody.velocity.x * inertiaCounterFactor, 0, 0) : Vector3.zero);
     }
 
-    //public void PushLeftButton() => holdingLeft = true;
-    //public void PushRightButton() => holdingRight = true;
-    //public void ReleaseLeftButton() => holdingLeft = false;
-    //public void ReleaseRightButton() => holdingRight = false;
+    public void ActivatePowerUp(PowerUpTypes type)
+    {
+        if(type != PowerUpTypes.NONE)
+        {
+            switch (type)
+            {
+                case PowerUpTypes.SHIELD:
+                    shield.TurnShieldOn();
+                    break;
+                default:
+                    break;
+            }
+        }
+        Debug.Log("ACTIVATED POWERUP");
+
+        
+    }
 }
