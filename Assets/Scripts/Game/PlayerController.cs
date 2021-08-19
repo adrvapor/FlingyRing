@@ -80,7 +80,11 @@ public class PlayerController : MonoBehaviour
             GameManager.AddPearl(5);
         }
 
-        if (other.tag == "Urchin" || other.tag == "Eel" || (other.tag == "Oyster" && other.gameObject.GetComponent<OysterDetector>().Closed))
+        if (other.tag == "Urchin" || 
+            other.tag == "Eel" ||
+            other.tag == "Shark" ||
+            other.tag == "Octopus" ||
+            (other.tag == "Oyster" && other.gameObject.GetComponent<OysterDetector>().Closed))
         {
             gameObject.SetActive(false);
             GameManager.GameOver();

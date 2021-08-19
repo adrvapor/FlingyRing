@@ -10,6 +10,8 @@ TagManager:
   - Eel
   - SuperPearl
   - Oyster
+  - Shark
+  - Octopus
   layers:
   - Default
   - TransparentFX

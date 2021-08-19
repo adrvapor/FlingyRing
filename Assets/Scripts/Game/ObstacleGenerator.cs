@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class ObstacleGenerator : MonoBehaviour
 {
-    private string[] obstacleTags = { "RockLeft", "RockRight", "RockCenter"};
-    private string[] enemyTags = { "Urchin", "Eel", "Oyster" };
+    private string[] terrainTags = { "RockLeft", "RockRight", "RockCenter" };
+    private string[] enemyTags = { "Urchin", "Eel", "Oyster", "Shark", "Octopus" };
+
+    private Queue<string> lastObstacles = new Queue<string>(3);
+    private Queue<string> lastEnemies = new Queue<string>(2);
+    private string lastTerrain = "";
 
     private int maxObstacleIdx = 3;
     private int maxEnemyIdx = 0;
@@ -39,9 +43,10 @@ public class ObstacleGenerator : MonoBehaviour
             var margin = new Vector3(0, 1, 0);
 
             if (tag == "Urchin") margin += new Vector3(UnityEngine.Random.Range(-2f, 2f), 0, 0);
-            
+
             var obstacle = objectPooler.SpawnFromPool(tag, currentPos + margin);
-            if (tag == "Eel")
+
+            if (tag == "Eel" || tag == "Shark" || tag == "Octopus")
                 obstacle.transform.localScale += new Vector3(obstacle.transform.localScale.x * -2f * UnityEngine.Random.Range(0, 2), 0, 0);
 
             if (tag == "Oyster")
@@ -54,23 +59,69 @@ public class ObstacleGenerator : MonoBehaviour
                 oysterController.ResetPearl();
             }
 
+            if (tag == "Octopus") nextY += 6;
+
             if (UnityEngine.Random.Range(0f, 1f) <= 0.3)
-            objectPooler.SpawnFromPool("Pearl", currentPos + new Vector3(UnityEngine.Random.Range(-2f, 2f), 2.5f, 0));
+            {
+                GameObject pearl = objectPooler.SpawnFromPool("Pearl", currentPos + new Vector3(UnityEngine.Random.Range(-2f, 2f), 2.5f, 0));
+                while (Physics.CheckSphere(pearl.transform.position, 1))
+                {
+                    pearl.transform.position += new Vector3(-pearl.transform.position.x + UnityEngine.Random.Range(-2f, 2f), 0, 0);
+                }
+
+            }
         }
     }
 
     public string RandomizeNextObstacle()
     {
-        float randomType = UnityEngine.Random.Range(0f, 1f);
+        // MEJORAR GENERACIÓN DE ENEMIGOS Y OBSTÁCULOS (p.ej. comprobar si dos últimos ==, o si 2 últimos == terreno)
 
-        if (randomType <= 0.6 && enableEnemies)
+        float randomType = UnityEngine.Random.Range(0f, 1f);
+        string nextObstacle;
+
+        int obstacles = 0;
+        int enemies = 0;
+
+        foreach (string obstacle in lastObstacles)
         {
-            return enemyTags[UnityEngine.Random.Range(0, maxEnemyIdx)];
+            if (Array.Exists(terrainTags, o => o == obstacle)) obstacles++;
+        }
+
+        if ((randomType <= 0.6 || obstacles > 2) && enableEnemies)
+        {
+            int sameEnemyIterations;
+            do
+            {
+                sameEnemyIterations = 0;
+                nextObstacle = enemyTags[UnityEngine.Random.Range(0, maxEnemyIdx)];
+                foreach (string enemy in lastEnemies)
+                {
+                    if (enemy == nextObstacle) sameEnemyIterations++;
+                }
+            }
+            while (maxEnemyIdx > 1 && sameEnemyIterations > 2);
+
+            if (lastEnemies.Count >= 3)
+                lastEnemies.Dequeue();
+            lastEnemies.Enqueue(nextObstacle);
         }
         else
         {
-            return obstacleTags[UnityEngine.Random.Range(0, maxObstacleIdx)];
+            do
+            {
+                nextObstacle = terrainTags[UnityEngine.Random.Range(0, maxObstacleIdx)];
+            }
+            while (nextObstacle == lastTerrain);
+
+            lastTerrain = nextObstacle;
         }
+
+        if (lastObstacles.Count >= 3)
+            lastObstacles.Dequeue();
+        lastObstacles.Enqueue(nextObstacle);
+
+        return nextObstacle;
     }
 
     private void IncreaseDifficulty(float currentY)
@@ -83,5 +134,11 @@ public class ObstacleGenerator : MonoBehaviour
 
         if (currentY > 60f && maxEnemyIdx < 3)
             maxEnemyIdx = 3;
+
+        if (currentY > 80f && maxEnemyIdx < 4)
+            maxEnemyIdx = 4;
+
+        if (currentY > 100f && maxEnemyIdx < 5)
+            maxEnemyIdx = 5;
     }
 }
