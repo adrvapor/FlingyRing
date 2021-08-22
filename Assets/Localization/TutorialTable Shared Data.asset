@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: TutorialTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: TutorialText
+  m_TableCollectionNameGuidString: 1cfdbda5b2730004285a82824e309581
+  m_Entries:
+  - m_Id: 214543966208
+    m_Key: TS0_Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 225688231936
+    m_Key: TS0_Text1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 228783628288
+    m_Key: TS0_Text2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 506241032192
+    m_Key: "TS1_Title\t\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 575367356416
+    m_Key: TS1_Text1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 600461877248
+    m_Key: TS1_Text2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 624696565760
+    m_Key: TS2_Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 656573276160
+    m_Key: TS2_Text1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 673044307968
+    m_Key: TS2_Text2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687510462464
+    m_Key: TS3_Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 722176385024
+    m_Key: TS3_Text1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 745245057024
+    m_Key: TS3_Text2
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1629567771206

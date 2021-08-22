@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: TutorialTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 1cfdbda5b2730004285a82824e309581, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 214543966208
+    m_Localized: OBJECTIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 506241032192
+    m_Localized: HOW TO PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 624696565760
+    m_Localized: PEARLS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687510462464
+    m_Localized: ENEMIES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 225688231936
+    m_Localized: Ring is tired of living at the bottom of the sea...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 228783628288
+    m_Localized: Help him explore the ocean, avoiding its dangers!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 575367356416
+    m_Localized: 'Fling Ring upwards with the two buttons:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 600461877248
+    m_Localized: The left button flings Ring to the right, and the right one flings
+      it to the left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 656573276160
+    m_Localized: Get as many Pearls as you can!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 673044307968
+    m_Localized: You can use them to buy stuff, like new outfits for Ring. Some have
+      a higher value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 722176385024
+    m_Localized: Be careful! You will find dangerous creatures...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 745245057024
+    m_Localized: You must fling Ring carefully around them, don't go too fast...
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1
