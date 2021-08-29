@@ -19,11 +19,14 @@ public class PoleController : MonoBehaviour
     {
         bool enabled = true;
 
+        var renderer = this.GetComponent<Renderer>();
+        var childrenRenderers = this.GetComponentsInChildren<Renderer>();
+
         for (int i = 0; i < 10; i++)
         {
             enabled = !enabled;
-            this.GetComponent<Renderer>().enabled = enabled;
-            foreach(var comp in this.GetComponentsInChildren<Renderer>()) comp.enabled = enabled;
+            renderer.enabled = enabled;
+            foreach(var childRenderer in childrenRenderers) childRenderer.enabled = enabled;
             yield return new WaitForSeconds(.2f);
         }
 

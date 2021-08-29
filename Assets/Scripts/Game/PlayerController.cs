@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 screenBounds;
 
     private Rigidbody rigidbody;
-    private ShieldController shield;
+    public ShieldController shield;
 
     void Start()
     {
@@ -80,15 +80,16 @@ public class PlayerController : MonoBehaviour
             GameManager.AddPearl(5);
         }
 
-        if (other.tag == "Urchin" || 
-            other.tag == "Eel" ||
-            other.tag == "Shark" ||
-            other.tag == "Octopus" ||
-            (other.tag == "Oyster" && other.gameObject.GetComponent<OysterDetector>().Closed))
-        {
-            gameObject.SetActive(false);
-            GameManager.GameOver();
-        }
+        if(!shield.On)
+            if (other.tag == "Urchin" || 
+                other.tag == "Eel" ||
+                other.tag == "Shark" ||
+                other.tag == "Octopus" ||
+                (other.tag == "Oyster" && other.gameObject.GetComponent<OysterDetector>().Closed))
+            {
+                gameObject.SetActive(false);
+                GameManager.GameOver();
+            }
     }
 
     public void FlingRight()
@@ -107,19 +108,17 @@ public class PlayerController : MonoBehaviour
 
     public void ActivatePowerUp(PowerUpTypes type)
     {
-        if(type != PowerUpTypes.NONE)
+        if (type != PowerUpTypes.NONE)
         {
             switch (type)
             {
                 case PowerUpTypes.SHIELD:
-                    shield.TurnShieldOn();
+                    Debug.Log("ACTIVATED POWERUP");
+                    shield.ActivateShield();
                     break;
                 default:
                     break;
             }
         }
-        Debug.Log("ACTIVATED POWERUP");
-
-        
     }
 }

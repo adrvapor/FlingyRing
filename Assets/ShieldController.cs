@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class ShieldController : MonoBehaviour
 {
-    public float shieldDuration = 30f;
+    public float shieldDuration = 10f;
+    public bool On;
+    
+    private SpriteRenderer renderer;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        renderer = GetComponent<SpriteRenderer>();
+
+        On = false;
+        renderer.enabled = On;
     }
 
     // Update is called once per frame
@@ -18,15 +25,26 @@ public class ShieldController : MonoBehaviour
         
     }
 
-    public void TurnShieldOn()
+    public void ActivateShield()
     {
-        gameObject.SetActive(true);
+        On = true;
+        renderer.enabled = On;
 
+        StartCoroutine(DeactivateShield());
     }
 
-    IEnumerable TurnShieldOff()
+    IEnumerator DeactivateShield()
     {
         yield return new WaitForSeconds(shieldDuration);
-        gameObject.SetActive(false);
+
+        for (int i = 0; i < 10; i++)
+        {
+            enabled = !enabled;
+            renderer.enabled = enabled;
+            yield return new WaitForSeconds(.4f);
+        }
+
+        On = false;
+        renderer.enabled = On;
     }
 }

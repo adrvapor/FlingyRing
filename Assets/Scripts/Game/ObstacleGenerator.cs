@@ -57,6 +57,8 @@ public class ObstacleGenerator : MonoBehaviour
                 var oysterController = obstacle.GetComponent<OysterController>();
                 oysterController.Pearl.transform.localScale += new Vector3(oysterController.Pearl.transform.localScale.x * -2f * random, 0, 0);
                 oysterController.ResetPearl();
+
+                nextY += 1;
             }
 
             if (tag == "Octopus") nextY += 6;
