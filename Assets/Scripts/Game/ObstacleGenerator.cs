@@ -19,12 +19,18 @@ public class ObstacleGenerator : MonoBehaviour
 
     private float nextY;
 
+    private float nextPowerUp;
+    private float powerUpDistance = 50f;
+
     ObjectPooler objectPooler;
+
+    public GameObject Pole;
 
     private void Start()
     {
         enableEnemies = false;
         nextY = 6;
+        nextPowerUp = powerUpDistance;
         objectPooler = FindObjectOfType<ObjectPooler>();
     }
 
@@ -38,6 +44,16 @@ public class ObstacleGenerator : MonoBehaviour
         if (currentPos.y >= nextY)
         {
             nextY = currentPos.y + UnityEngine.Random.Range(2.5f, 5f);
+
+            // If it's time for a powerup we spawn it and return
+            if(currentPos.y >= nextPowerUp)// && UnityEngine.Random.Range(0f, 1f) > 0.5)
+            {
+                nextPowerUp += powerUpDistance;
+                
+                Instantiate(Pole).GetComponent<PoleController>().SpawnPole(currentPos.y);
+
+                return;
+            } 
 
             string tag = RandomizeNextObstacle();
             var margin = new Vector3(0, 1, 0);
@@ -77,8 +93,6 @@ public class ObstacleGenerator : MonoBehaviour
 
     public string RandomizeNextObstacle()
     {
-        // MEJORAR GENERACIÓN DE ENEMIGOS Y OBSTÁCULOS (p.ej. comprobar si dos últimos ==, o si 2 últimos == terreno)
-
         float randomType = UnityEngine.Random.Range(0f, 1f);
         string nextObstacle;
 

@@ -4,13 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public enum PowerUpTypes
-{
-    NONE,
-    SHIELD,
-
-}
-
 public class PlayerController : MonoBehaviour
 {    
     public float horizontalImpulse = 1f;
@@ -26,13 +19,22 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 screenBounds;
 
+    private Coroutine powerUpCoroutine;
+
     private Rigidbody rigidbody;
-    public ShieldController shield;
+    private ShieldPowerUp Shield;
+    private PearlMultiplierPowerUp PearlMultiplier;
+
+    public GameObject Ring;
+    private Renderer RingRenderer;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        //shield = GetComponentInChildren<ShieldController>();
+        Shield = GetComponentInChildren<ShieldPowerUp>();
+        PearlMultiplier = GetComponentInChildren<PearlMultiplierPowerUp>();
+
+        RingRenderer = Ring.GetComponentInChildren<MeshRenderer>();
 
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         screenBounds.x -= 0.3f;
@@ -71,16 +73,16 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Pearl")
         {
             other.gameObject.SetActive(false);
-            GameManager.AddPearl();
+            GameManager.AddPearl(PearlMultiplier.IsPearl ? 2 : 1);
         }
 
         if (other.tag == "SuperPearl")
         {
             other.gameObject.SetActive(false);
-            GameManager.AddPearl(5);
+            GameManager.AddPearl(PearlMultiplier.IsPearl ? 10 : 5);
         }
 
-        if(!shield.On)
+        if(!Shield.On)
             if (other.tag == "Urchin" || 
                 other.tag == "Eel" ||
                 other.tag == "Shark" ||
@@ -108,17 +110,30 @@ public class PlayerController : MonoBehaviour
 
     public void ActivatePowerUp(PowerUpTypes type)
     {
-        if (type != PowerUpTypes.NONE)
+        // We reset any power ups if they're active
+        if(powerUpCoroutine != null)
         {
-            switch (type)
-            {
-                case PowerUpTypes.SHIELD:
-                    Debug.Log("ACTIVATED POWERUP");
-                    shield.ActivateShield();
-                    break;
-                default:
-                    break;
-            }
+            StopCoroutine(powerUpCoroutine);
+
+            Shield.ResetShield();
+            PearlMultiplier.ResetPearlRing();
+            RingRenderer.enabled = true;
+        }
+
+        switch (type)
+        {
+            case PowerUpTypes.SHIELD:
+                Shield.ActivateShield();
+                powerUpCoroutine = StartCoroutine(Shield.DeactivateShield());
+                break;
+
+            case PowerUpTypes.DOUBLE_PEARLS:
+                PearlMultiplier.ActivatePearlRing(RingRenderer);
+                powerUpCoroutine = StartCoroutine(PearlMultiplier.DeactivatePearlRing(RingRenderer));
+                break;
+                
+            default:
+                break;
         }
     }
 }
