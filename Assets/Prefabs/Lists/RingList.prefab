@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2789917898680574659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8494576645073116432}
+  - component: {fileID: 8179579161005748057}
+  m_Layer: 0
+  m_Name: RingList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8494576645073116432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2789917898680574659}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8179579161005748057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2789917898680574659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c5622f0500ae2b4daa5e7752c9fb20b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rings:
+  - key: Default
+    ring: {fileID: 4231320469426609095, guid: 8672063b9815b314b96bd07beb8bb1b4, type: 3}
+    unlocked: 1
+  - key: Gear
+    ring: {fileID: 4231320469426609095, guid: 420691944bfbe8d4ab03c396de94b9b3, type: 3}
+    unlocked: 0
+  - key: Donut
+    ring: {fileID: 4231320469426609095, guid: 66f526230e2927449879e3071e45338c, type: 3}
+    unlocked: 0
+  - key: Tyre
+    ring: {fileID: 4231320469426609095, guid: 2be96e763c9a4d5428958e56bed2881c, type: 3}
+    unlocked: 0

@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3324679102464
-    m_Localized: Personaje
+    m_Localized: Mis Rings
     m_Metadata:
       m_Items: []
   - m_Id: 3439821135872
@@ -105,6 +105,16 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1115987324772352
     m_Localized: "Vibraci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42799602705965056
+    m_Localized: Seleccionar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42799668338434048
+    m_Localized: 'Ring
+
+      actual'
     m_Metadata:
       m_Items: []
   references:

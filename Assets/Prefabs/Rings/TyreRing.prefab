@@ -8559,7 +8559,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4400366894244248406}
-  - component: {fileID: 3705527461925167625}
   m_Layer: 0
   m_Name: TyreRing
   m_TagString: Untagged
@@ -8583,22 +8582,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3705527461925167625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4231320469426609095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e815544da9324624dbbdb3a59ed4c562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pearlDuration: 8
-  PearlMaterial: {fileID: 2100000, guid: d20416981311c674f8f72fe1013e480d, type: 2}
-  Ring: {fileID: 7948355945895296594}
-  IsPearl: 0
 --- !u!1 &7256799664316864689
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,5 +68,13 @@ MonoBehaviour:
     m_Localized: "Impulsa a Ring con cuidado cuando pases cerca, no vayas muy r\xE1pido..."
     m_Metadata:
       m_Items: []
+  - m_Id: 7955381914509312
+    m_Localized: POSTES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7955887508496384
+    m_Localized: Intenta encajar a Ring en los postes para conseguir un power-up!
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

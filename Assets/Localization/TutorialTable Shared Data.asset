@@ -63,6 +63,14 @@ MonoBehaviour:
     m_Key: TS3_Text2
     m_Metadata:
       m_Items: []
+  - m_Id: 7955381914509312
+    m_Key: TS4_Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7955887508496384
+    m_Key: TS4_Text1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

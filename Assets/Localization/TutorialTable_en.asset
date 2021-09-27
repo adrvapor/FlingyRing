@@ -68,5 +68,13 @@ MonoBehaviour:
     m_Localized: You must fling Ring carefully around them, don't go too fast...
     m_Metadata:
       m_Items: []
+  - m_Id: 7955381914509312
+    m_Localized: POLES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7955887508496384
+    m_Localized: Try to fit Ring into the poles to get a power-up!
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

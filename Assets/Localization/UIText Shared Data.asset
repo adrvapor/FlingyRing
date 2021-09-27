@@ -103,6 +103,14 @@ MonoBehaviour:
     m_Key: Rumble
     m_Metadata:
       m_Items: []
+  - m_Id: 42799602705965056
+    m_Key: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42799668338434048
+    m_Key: CurrentRing
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

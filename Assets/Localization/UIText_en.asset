@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3324679102464
-    m_Localized: Character
+    m_Localized: My Rings
     m_Metadata:
       m_Items: []
   - m_Id: 3439821135872
@@ -107,6 +107,16 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1115987324772352
     m_Localized: Rumble
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42799602705965056
+    m_Localized: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42799668338434048
+    m_Localized: 'Current
+
+      Ring'
     m_Metadata:
       m_Items: []
   references:
