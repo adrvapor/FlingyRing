@@ -10,7 +10,6 @@ public class RingList : MonoBehaviour
     {
         public string key;
         public GameObject ring;
-        public bool unlocked;
     }
 
     public List<RingType> Rings;

@@ -31,6 +31,14 @@ MonoBehaviour:
     m_Key: Tyre
     m_Metadata:
       m_Items: []
+  - m_Id: 4346590069260288
+    m_Key: Lifesaver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4379028556349440
+    m_Key: Float
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

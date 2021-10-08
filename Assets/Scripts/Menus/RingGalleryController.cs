@@ -20,7 +20,6 @@ public class RingGalleryController : MonoBehaviour
 
     public const float ringMargin = 1.5f;
     
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(GetUnlockedRings());
@@ -57,25 +56,33 @@ public class RingGalleryController : MonoBehaviour
     }
     public void NextRing()
     {
-        StartCoroutine(SmoothMove(new Vector3(-ringMargin, 0), 0.5f));
+        StartCoroutine(SmoothMove(new Vector3(-ringMargin * (1 + currentRingIndex), 0),
+                                  new Vector3(-ringMargin * (2 + currentRingIndex), 0),
+                                  0.5f));
         currentRingIndex++;
         SetUIElements();
     }
     public void PrevRing()
     {
-        StartCoroutine(SmoothMove(new Vector3(ringMargin, 0), 0.5f));
+        StartCoroutine(SmoothMove(new Vector3(-ringMargin * (1 + currentRingIndex), 0),
+                                  new Vector3(-ringMargin * (currentRingIndex), 0),
+                                  0.5f));
         currentRingIndex--;
         SetUIElements();
     }
     public void EnterGallery()
     {
-        StartCoroutine(SmoothMove(new Vector3(-ringMargin * (1 + currentRingIndex), 0), 0.5f));
         currentRingIndex = OwnedRingList.FindIndex(ring => ring.key == UserDataManager.GetSelectedRing());
+        StartCoroutine(SmoothMove(new Vector3(0, 0),
+                                  new Vector3(-ringMargin * (1 + currentRingIndex), 0),
+                                  0.5f));
         SetUIElements();
     }
     public void ExitGallery()
     {
-        StartCoroutine(SmoothMove(new Vector3(-RingHolder.transform.position.x, 0), 0.5f));
+        StartCoroutine(SmoothMove(new Vector3(-ringMargin * (1 + currentRingIndex), 0),
+                                  new Vector3(0, 0),
+                                  0.5f));
     }
 
     private void SetUIElements()
@@ -89,10 +96,11 @@ public class RingGalleryController : MonoBehaviour
 
     #endregion
 
-    IEnumerator SmoothMove(Vector3 direction, float time)
+    IEnumerator SmoothMove(Vector3 startPos, Vector3 finalPos, float time)
     {
-        Vector3 startPos = RingHolder.transform.position; //Starting position.
-        Vector3 finalPos = RingHolder.transform.position + direction; //Ending position.
+        var yz = new Vector3(0, RingHolder.transform.position.y, RingHolder.transform.position.z);
+        startPos += yz;
+        finalPos += yz;
 
         float elapsedTime = 0;
 

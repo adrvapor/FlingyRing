@@ -2996,7 +2996,7 @@ GameObject:
   - component: {fileID: 569756497}
   - component: {fileID: 569756496}
   m_Layer: 0
-  m_Name: agua parallax
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3042,7 +3042,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6ccc66d2ecf1b494a89c3f4b7c5d6bcb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd43c11f2f3da4c4e9d9c6cd649ba8e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6793,18 +6793,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 754766162}
-        m_TargetAssemblyTypeName: RingGalleryController, Assembly-CSharp
-        m_MethodName: EnterGallery
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1370639143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7244,6 +7232,7 @@ GameObject:
   - component: {fileID: 1395250009}
   - component: {fileID: 1395250008}
   - component: {fileID: 1395250012}
+  - component: {fileID: 1395250013}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -7355,6 +7344,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1395250013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395250007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23371ea216110a144a8ca8636cc1ac20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RingGalleryController: {fileID: 754766162}
 --- !u!1 &1404899765
 GameObject:
   m_ObjectHideFlags: 0
@@ -8786,7 +8788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Normal
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4572e5a33b20ed54ba6e02c032edb292, type: 2}
   m_sharedMaterial: {fileID: -3969074668737855184, guid: 4572e5a33b20ed54ba6e02c032edb292, type: 2}

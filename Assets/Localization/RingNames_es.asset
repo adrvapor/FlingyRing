@@ -34,5 +34,13 @@ MonoBehaviour:
     m_Localized: Rueda
     m_Metadata:
       m_Items: []
+  - m_Id: 4346590069260288
+    m_Localized: Salvavidas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4379028556349440
+    m_Localized: Flotador
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
