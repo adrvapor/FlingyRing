@@ -8,6 +8,7 @@ public class ObstacleGenerator : MonoBehaviour
     private string[] terrainTags = { "RockLeft", "RockRight", "RockCenter" };
     private string[] enemyTags = { "Urchin", "Eel", "Oyster", "Shark", "Octopus" };
 
+    private Queue<GameObject> lastObjects = new Queue<GameObject>(5);
     private Queue<string> lastObstacles = new Queue<string>(3);
     private Queue<string> lastEnemies = new Queue<string>(2);
     private string lastTerrain = "";
@@ -19,12 +20,14 @@ public class ObstacleGenerator : MonoBehaviour
 
     private float nextY;
 
+    public GameObject Pole;
     private float nextPowerUp;
     private float powerUpDistance = 50f;
 
+    public GameObject SeaFloor;
+
     ObjectPooler objectPooler;
 
-    public GameObject Pole;
 
     private void Start()
     {
@@ -32,6 +35,8 @@ public class ObstacleGenerator : MonoBehaviour
         nextY = 6;
         nextPowerUp = powerUpDistance;
         objectPooler = FindObjectOfType<ObjectPooler>();
+
+        GameManager.SetObstacleGenerator(this);
     }
 
     // Update is called once per frame
@@ -61,6 +66,9 @@ public class ObstacleGenerator : MonoBehaviour
             if (tag == "Urchin") margin += new Vector3(UnityEngine.Random.Range(-2f, 2f), 0, 0);
 
             var obstacle = objectPooler.SpawnFromPool(tag, currentPos + margin);
+
+            if (lastObjects.Count >= 5) lastObjects.Dequeue();
+            lastObjects.Enqueue(obstacle);
 
             if (tag == "Eel" || tag == "Shark" || tag == "Octopus")
                 obstacle.transform.localScale += new Vector3(obstacle.transform.localScale.x * -2f * UnityEngine.Random.Range(0, 2), 0, 0);
@@ -156,5 +164,22 @@ public class ObstacleGenerator : MonoBehaviour
 
         if (currentY > 100f && maxEnemyIdx < 5)
             maxEnemyIdx = 5;
+    }
+
+    public float GetRespawnPosition()
+    {
+        return this.transform.position.y - 6;
+    }
+
+    public void ClearObstaclesAtRespawn()
+    {
+        float margin = GetRespawnPosition() + 2;
+
+        foreach(var obj in lastObjects)
+        {
+            if (obj.transform.position.y < margin) obj.transform.position = obj.transform.position - new Vector3(0, 10, 0);
+        }
+
+        SeaFloor.transform.position += new Vector3(0, GetRespawnPosition());
     }
 }

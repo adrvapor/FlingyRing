@@ -98,6 +98,12 @@ public class PlayerController : MonoBehaviour
             }
     }
 
+    public void Respawn(float yPos)
+    {
+        gameObject.transform.position = new Vector3(0, yPos, gameObject.transform.position.z);
+        gameObject.SetActive(true);
+    }
+
     public void FlingRight()
     {
         if(Settings.RumbleOn) Handheld.Vibrate();

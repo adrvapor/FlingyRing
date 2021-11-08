@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -11,12 +12,13 @@ public class UserDataManager : MonoBehaviour
 
     // Legacy data
     public static string LegacyDataRetrieved = "LegacyDataRetrieved";
-    public static string TotalScoreKey = "TotalScore";
-    public static string HighScoreKey = "HighScore";
-
-    public static string SelectedRingKey = "SelectedRing";
     public static string TotalPearlsKey = "TotalPearls";
     public static string TotalLivesKey = "TotalLives";
+
+    public static string SelectedRingKey = "SelectedRing";
+    public static string UnseenRingsKey = "UnseenRings";
+    public static string TotalScoreKey = "TotalScore";
+    public static string HighScoreKey = "HighScore";
 
     public static bool DataLoaded;
 
@@ -74,7 +76,6 @@ public class UserDataManager : MonoBehaviour
         PlayerPrefs.SetInt(TotalScoreKey, score + PlayerPrefs.GetInt(TotalScoreKey, 0));
         Social.ReportScore(PlayerPrefs.GetInt(TotalScoreKey, 1), GPGSIds.leaderboard_total_score, (bool success) => { if (!success) Debug.LogWarning("TotalScore not updated"); });
     }
-
     public static void UpdateHighScore(int score)
     {
         if (score > PlayerPrefs.GetInt(HighScoreKey, 0))
@@ -83,29 +84,39 @@ public class UserDataManager : MonoBehaviour
             Social.ReportScore(PlayerPrefs.GetInt(HighScoreKey, 1), GPGSIds.leaderboard_high_score, (bool success) => { if (!success) Debug.LogWarning("HighScore not updated"); });
         }
     }
-
+    public static void UpdateUnseenRings(int rings)
+    {
+        PlayerPrefs.SetInt(UnseenRingsKey, PlayerPrefs.GetInt(UnseenRingsKey, 0) + rings);
+    }
     public static void UpdateSelectedRing(string key)
     {
         PlayerPrefs.SetString(SelectedRingKey, key);
     }
-
     public static void UpdateScore(int score)
     {
         UpdateHighScore(score);
         UpdateTotalScore(score);
     }
-
     public static void UpdatePearls(int pearls)
     {
-        PlayerPrefs.SetInt(TotalPearlsKey, pearls + PlayerPrefs.GetInt(TotalPearlsKey, 0));
+        //PlayerPrefs.SetInt(TotalPearlsKey, pearls + PlayerPrefs.GetInt(TotalPearlsKey, 0));
         LocalUserData.TotalPearls += pearls;
         SaveDataLocally();
     }
-
     public static void UpdateLives(int lives)
     {
-        PlayerPrefs.SetInt(TotalLivesKey, lives + PlayerPrefs.GetInt(TotalLivesKey, 0));
+        //PlayerPrefs.SetInt(TotalLivesKey, lives + PlayerPrefs.GetInt(TotalLivesKey, 0));
         LocalUserData.TotalLives += lives;
+        SaveDataLocally();
+    }
+    public static void UpdateLastDayPlayed()
+    {
+        LocalUserData.SetLastDayPlayedToToday();
+        SaveDataLocally();
+    }
+    public static void UpdateLastDayPlayed(DateTime date)
+    {
+        LocalUserData.SetLastDayPlayed(date);
         SaveDataLocally();
     }
     #endregion
@@ -114,9 +125,11 @@ public class UserDataManager : MonoBehaviour
     public static int GetTotalScore() => PlayerPrefs.GetInt(TotalScoreKey, 0);
     public static int GetHighScore() => PlayerPrefs.GetInt(HighScoreKey, 0);
     public static string GetSelectedRing() => PlayerPrefs.GetString(SelectedRingKey, "Default");
+    public static int GetUnseenRings() => PlayerPrefs.GetInt(UnseenRingsKey, 0);
     public static int GetTotalPearls() => LocalUserData.TotalPearls;//PlayerPrefs.GetInt(TotalPearlsKey, 0);
     public static int GetTotalLives() => LocalUserData.TotalLives;//PlayerPrefs.GetInt(TotalLivesKey, 0);
     public static List<string> GetUnlockedRings() => LocalUserData.UnlockedRings;
+    public static DateTime GetLastDayPlayed() => LocalUserData.GetLastDayPlayed();
     #endregion
 
     private static void LegacyDataRecovery()

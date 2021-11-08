@@ -119,5 +119,73 @@ MonoBehaviour:
       Ring'
     m_Metadata:
       m_Items: []
+  - m_Id: 48956028121776128
+    m_Localized: 'Owned Rings:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51859916525142016
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860024285200384
+    m_Localized: Buy a surprise Ring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860109798670336
+    m_Localized: Are you sure you want to buy a Ring?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860171773706240
+    m_Localized: 'You got:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860608140705792
+    m_Localized: Buy a life
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860783957540864
+    m_Localized: Are you sure you want to buy a life?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51862222884831232
+    m_Localized: Deactivate ads
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52221836964921344
+    m_Localized: You don't have enough pearls to buy this. Keep playing!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53333980460613632
+    m_Localized: You've got all of the Rings! More will be added in future updates...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56930758548258816
+    m_Localized: Use a life to continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56931092012204032
+    m_Localized: You don't have any lives, you can't continue!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56931457067646976
+    m_Localized: You can only continue once per game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56970680588042240
+    m_Localized: DAILY LIFE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56972098170519552
+    m_Localized: You got a life!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56973585504272384
+    m_Localized: You will receive one every day you play Flingy Ring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57227419371700224
+    m_Localized: Tooltips
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

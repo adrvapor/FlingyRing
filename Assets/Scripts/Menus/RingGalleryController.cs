@@ -9,9 +9,12 @@ public class RingGalleryController : MonoBehaviour
 {
     public RingList RingList;
     List<RingType> OwnedRingList;
+    List<string> UnseenRingList;
     public GameObject RingHolder;
 
-    public TextMeshProUGUI RingName;
+    public NumberNotificationController RingsNotification;
+    public TextMeshProUGUI OwnedRingsText;
+    public TextMeshProUGUI RingNameText;
     public GameObject SelectedPanel;
     public GameObject PrevButton;
     public GameObject NextButton;
@@ -22,23 +25,41 @@ public class RingGalleryController : MonoBehaviour
     
     void Start()
     {
+        UpdateRingGallery();
+    }
+
+    public void UpdateRingGallery()
+    {
         StartCoroutine(GetUnlockedRings());
     }
 
-    public IEnumerator GetUnlockedRings()
+    private IEnumerator GetUnlockedRings()
     {
+        int unseenRings = UserDataManager.GetUnseenRings();
+        RingsNotification.SetNotification(unseenRings);
+
         yield return new WaitUntil(() => UserDataManager.DataLoaded);
         var unlockedRingKeys = UserDataManager.GetUnlockedRings();
+
         OwnedRingList = RingList.Rings
             .Where(ring => unlockedRingKeys.Contains(ring.key))
             .ToList();
 
+        UnseenRingList = unlockedRingKeys
+            .Skip(unlockedRingKeys.Count - unseenRings)
+            .ToList();
+
         currentRingIndex = OwnedRingList.FindIndex(ring => ring.key == UserDataManager.GetSelectedRing());
         RenderRings();
+
+        OwnedRingsText.text = $"{OwnedRingList.Count}/{RingList.Rings.Count}";
     }
 
     public void RenderRings()
     {
+        foreach (Transform child in RingHolder.transform)
+            Destroy(child.gameObject);
+
         float xPos = ringMargin;
         foreach(RingType ring in OwnedRingList)
         {
@@ -80,6 +101,7 @@ public class RingGalleryController : MonoBehaviour
     }
     public void ExitGallery()
     {
+        RingsNotification.SetNotification(UserDataManager.GetUnseenRings());
         StartCoroutine(SmoothMove(new Vector3(-ringMargin * (1 + currentRingIndex), 0),
                                   new Vector3(0, 0),
                                   0.5f));
@@ -88,10 +110,18 @@ public class RingGalleryController : MonoBehaviour
     private void SetUIElements()
     {
         var ringKey = OwnedRingList[currentRingIndex].key;
+
         SelectedPanel.SetActive(ringKey == UserDataManager.GetSelectedRing());
         PrevButton.SetActive(currentRingIndex > 0);
         NextButton.SetActive(currentRingIndex < OwnedRingList.Count -1);
-        RingName.text = RingNameLocalizer.GetNameByKey(ringKey);
+        RingNameText.text = RingNameLocalizer.GetNameByKey(ringKey);
+
+        if (UnseenRingList.Contains(ringKey))
+        {
+            UnseenRingList.Remove(ringKey);
+            UserDataManager.UpdateUnseenRings(-1);
+            RingsNotification.SetNotification(UnseenRingList.Count);
+        }
     }
 
     #endregion

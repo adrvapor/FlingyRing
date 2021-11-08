@@ -46,13 +46,13 @@ MonoBehaviour:
   Rings:
   - key: Default
     ring: {fileID: 4231320469426609095, guid: 8672063b9815b314b96bd07beb8bb1b4, type: 3}
-  - key: Gear
-    ring: {fileID: 4231320469426609095, guid: 420691944bfbe8d4ab03c396de94b9b3, type: 3}
   - key: Donut
     ring: {fileID: 4231320469426609095, guid: 66f526230e2927449879e3071e45338c, type: 3}
-  - key: Tyre
-    ring: {fileID: 4231320469426609095, guid: 2be96e763c9a4d5428958e56bed2881c, type: 3}
-  - key: Lifesaver
-    ring: {fileID: 4231320469426609095, guid: 4aa579c66954b27409c0399bbfda46f7, type: 3}
   - key: Float
     ring: {fileID: 4231320469426609095, guid: 092377c0331f0bd46aa139e159c0a1bb, type: 3}
+  - key: Gear
+    ring: {fileID: 4231320469426609095, guid: 420691944bfbe8d4ab03c396de94b9b3, type: 3}
+  - key: Lifesaver
+    ring: {fileID: 4231320469426609095, guid: 4aa579c66954b27409c0399bbfda46f7, type: 3}
+  - key: Tyre
+    ring: {fileID: 4231320469426609095, guid: 2be96e763c9a4d5428958e56bed2881c, type: 3}

@@ -117,5 +117,74 @@ MonoBehaviour:
       actual'
     m_Metadata:
       m_Items: []
+  - m_Id: 48956028121776128
+    m_Localized: 'Rings conseguidos:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51859916525142016
+    m_Localized: Comprar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860024285200384
+    m_Localized: Comprar un Ring sorpresa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860109798670336
+    m_Localized: "\xBFSeguro que quieres comprar un Ring?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860171773706240
+    m_Localized: 'Has conseguido:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860608140705792
+    m_Localized: Comprar una vida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51860783957540864
+    m_Localized: "\xBFSeguro que quieres comprar una vida?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51862222884831232
+    m_Localized: Desactivar anuncios
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52221836964921344
+    m_Localized: "No tienes perlas suficientes para comprar esto. \xA1Sigue jugando!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53333980460613632
+    m_Localized: "\xA1Ya tienes todos los Rings! En futuras actualizaciones llegar\xE1n
+      m\xE1s..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56930758548258816
+    m_Localized: Gastar una vida para continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56931092012204032
+    m_Localized: "No te quedan vidas, \xA1no puedes continuar!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56931457067646976
+    m_Localized: Solo puedes continuar una vez por partida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56970680588042240
+    m_Localized: VIDA DIARIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56972098170519552
+    m_Localized: "\xA1Has conseguido una vida!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56973585504272384
+    m_Localized: "Recibir\xE1s una por cada d\xEDa que juegues a Flingy Ring. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57227419371700224
+    m_Localized: Consejos
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
